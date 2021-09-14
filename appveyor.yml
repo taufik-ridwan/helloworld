@@ -1,28 +1,14 @@
-environment:
-  matrix:
-    ###########################################################################
-    # Build 64 bit version using clang-cl backed by MSVC 2017
-    # -------------------------------------------------------------------------
-    # Note that building against MSVC 2017 is only supported with a newer clang
-    ###########################################################################
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      MSVC_SETUP_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat
-      MSVC_SETUP_ARG: x86_amd64
-      USE_CLANG: ON
-      INSTALL_NEW_CLANG: ON
-      CLANG_URL: http://llvm.org/pre-releases/win-snapshots/LLVM-5.0.0-r301646-win64.exe
 version: 1.0.{build}
 
 before_build:
 
 - cmd: >-
-    call "%MSVC_SETUP_PATH%" %MSVC_SETUP_ARG%
-    
-    set PATH="C:\Program Files\LLVM\bin";%PATH%
+   curl -fsSL -o "LLVM-12.0.1-win64.exe" "https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/LLVM-12.0.1-win64.exe"
+   
+   LLVM-12.0.1-win64.exe /S
     
     clang-cl -v
-    
-    set CMAKE_EXTRA_OPTIONS=-DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cl.exe
+  
     
     mkdir build
 
@@ -32,6 +18,6 @@ before_build:
 
 
 
-    cmake ..  %CMAKE_EXTRA_OPTIONS%
+    cmake ..  -T "llvm"
 build:
   verbosity: minimal
