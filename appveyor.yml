@@ -7,15 +7,17 @@ environment:
     ###########################################################################
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       MSVC_SETUP_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat
+      MSVC_SETUP_ARG: x86_amd64
       USE_CLANG: ON
       INSTALL_NEW_CLANG: ON
       CLANG_URL: http://llvm.org/pre-releases/win-snapshots/LLVM-5.0.0-r301646-win64.exe
 version: 1.0.{build}
 
 before_build:
-- call "%MSVC_SETUP_PATH%" %MSVC_SETUP_ARG%
 
 - cmd: >-
+    call "%MSVC_SETUP_PATH%" %MSVC_SETUP_ARG%
+    
     set PATH="C:\Program Files\LLVM\bin";%PATH%
     
     clang-cl -v
