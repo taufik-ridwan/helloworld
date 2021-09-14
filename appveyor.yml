@@ -22,12 +22,10 @@ environment:
     # -------------------------------------------------------------------------
     # Note that building against MSVC 2017 is only supported with a newer clang
     ###########################################################################
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      MSVC_SETUP_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      MSVC_SETUP_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat
       MSVC_SETUP_ARG: x64
       USE_CLANG: ON
-      INSTALL_NEW_CLANG: ON
-      CLANG_URL: http://llvm.org/pre-releases/win-snapshots/LLVM-5.0.0-r301646-win64.exe
     ###########################################################################
     # Build 32 bit version using clang-cl backed by MSVC 2017
     ###########################################################################
