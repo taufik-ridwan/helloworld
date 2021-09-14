@@ -32,6 +32,6 @@ before_build:
 
 
 
-    cmake ..
+    cmake ..  %CMAKE_EXTRA_OPTIONS%
 build:
   verbosity: minimal
