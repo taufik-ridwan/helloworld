@@ -14,11 +14,14 @@ version: 1.0.{build}
 
 before_build:
 - call "%MSVC_SETUP_PATH%" %MSVC_SETUP_ARG%
-set PATH="C:\Program Files\LLVM\bin";%PATH%
-clang-cl -v
-set CMAKE_EXTRA_OPTIONS=-DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cl.exe
-- cmd: >-
 
+- cmd: >-
+    set PATH="C:\Program Files\LLVM\bin";%PATH%
+    
+    clang-cl -v
+    
+    set CMAKE_EXTRA_OPTIONS=-DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cl.exe
+    
     mkdir build
 
 
