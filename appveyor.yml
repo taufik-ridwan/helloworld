@@ -95,3 +95,6 @@ build_script:
 on_failure:
   - appveyor PushArtifact CMakeFiles/CMakeOutput.log
   - appveyor PushArtifact CMakeFiles/CMakeError.log
+artifacts:
+  - path: HelloWorld.exe
+    name: MyApp
