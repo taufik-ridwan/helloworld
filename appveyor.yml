@@ -104,8 +104,8 @@ build_script:
   #############################################################################
   # Build Step
   #############################################################################
-  - ninja LLVMTableGen # Just build an example to avoid timeouts
-  # - ninja
+# - ninja LLVMTableGen # Just build an example to avoid timeouts
+  - ninja
   # - ninja check-all # I wouldn't sweat a few failures here
   # - ninja install
 
