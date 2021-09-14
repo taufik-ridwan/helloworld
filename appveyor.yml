@@ -57,8 +57,8 @@ before_build:
   - cd %APPVEYOR_BUILD_FOLDER%
 
 build_script:
-  - md C:\projects\build-llvm
-  - cd C:\projects\build-llvm
+  - md build
+  - cd build
   - echo %configuration%
 
   - IF DEFINED USE_CLANG set PATH="C:\Program Files\LLVM\bin";%PATH%
@@ -97,5 +97,5 @@ on_failure:
   - appveyor PushArtifact CMakeFiles/CMakeOutput.log
   - appveyor PushArtifact CMakeFiles/CMakeError.log
 artifacts:
-  - path: myapp.zip
+  - path: /build/myapp.zip
     name: MyApp
