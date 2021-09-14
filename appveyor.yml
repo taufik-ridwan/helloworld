@@ -96,5 +96,5 @@ on_failure:
   - appveyor PushArtifact CMakeFiles/CMakeOutput.log
   - appveyor PushArtifact CMakeFiles/CMakeError.log
 artifacts:
-  - path: C:\projects\helloworld\build-llvm\HelloWorld.exe
+  - path: /build-llvm/HelloWorld.exe
     name: MyApp
