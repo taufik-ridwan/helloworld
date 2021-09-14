@@ -67,18 +67,6 @@ install:
   - IF DEFINED INSTALL_NEW_CLANG START /WAIT llvm-installer.exe /S /D=C:\"Program Files\LLVM"
 
 before_build:
-  ############################################################################
-  # Download extra sources and place them in the right place under LLVM
-  # --------------------------------------------------------------------------
-  # Replace the git repositories with the source versions you desire. It should
-  # all still work the same.
-  ############################################################################
-  - set LLVM_ROOT=%APPVEYOR_BUILD_FOLDER%
-  - set LLVM_GIT=http://llvm.org/git
-  - git clone --depth=1 %LLVM_GIT%/clang.git %LLVM_ROOT%\tools\clang
-  - git clone --depth=1 %LLVM_GIT%/clang-tools-extra.git %LLVM_ROOT%\tools\clang\tools\extra
-  - git clone --depth=1 %LLVM_GIT%/lld.git %LLVM_ROOT%\tools\lld
-
   #############################################################################
   # Setup MSVC Environment
   #############################################################################
