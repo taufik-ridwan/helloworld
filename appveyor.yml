@@ -91,10 +91,11 @@ build_script:
   - ninja
   # - ninja check-all # I wouldn't sweat a few failures here
   # - ninja install
+  - 7z a myapp.zip %APPVEYOR_BUILD_FOLDER%
 
 on_failure:
   - appveyor PushArtifact CMakeFiles/CMakeOutput.log
   - appveyor PushArtifact CMakeFiles/CMakeError.log
 artifacts:
-  - path: /build-llvm/HelloWorld.exe
+  - path: myapp.zip
     name: MyApp
